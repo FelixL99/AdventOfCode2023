@@ -60,14 +60,18 @@ public class Day6 {
         long recordDistance = race.distance();
 
         long waysToWin = 0;
+        boolean hasStartedWinning = false;
         for (long holdTime = 0; holdTime <= raceTime; holdTime++) {
-            long speed = holdTime; // Not nessasary, but might be more explanatory?
-            long calculatedDistance = speed * (raceTime - holdTime);
+            long remainingTime = raceTime - holdTime;
+            long calculatedDistance = holdTime * remainingTime;
             if (calculatedDistance > recordDistance) {
                 waysToWin++;
+                hasStartedWinning = true;
+            } else if (hasStartedWinning) {
+                // No longer winning -> everything after this is a loss.
+                break;
             }
         }
-
         return waysToWin;
     }
 }

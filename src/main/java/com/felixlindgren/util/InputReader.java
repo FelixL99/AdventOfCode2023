@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public class InputReader {
+
+    // Reads a text file from classpath (src/main/resources/fileName via Maven).
+    // Returns List of read lines from txt file if found.
     public static List<String> readLines(String fileName) {
         InputStream inputStream = InputReader.class
                 .getClassLoader()
